@@ -1,13 +1,13 @@
-import { data } from "../../result.js"
-import "./Featured.css"
-import Chart from "../Chart/Chart"
-import Bigchart from "../Bigchart"
-import Piechart from "../Piechart"
+import { data } from "../../result.js";
+import "./Featured.css";
+import Chart from "../Chart/Chart";
+import Bigchart from "../Bigchart";
+import Piechart from "../Piechart";
 
 function Featured() {
+  console.log(data);
   return (
     <div className="featured">
-      
       <div className="featuredpiechart">
         <Piechart
           data={data}
@@ -60,7 +60,7 @@ function Featured() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Featured
+export default Featured;

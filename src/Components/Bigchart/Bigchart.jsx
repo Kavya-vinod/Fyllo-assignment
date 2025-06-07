@@ -1,5 +1,5 @@
-import { useState } from "react"
-import "./Bigchart.css"
+import { useState } from "react";
+import "./Bigchart.css";
 
 import {
   XAxis,
@@ -10,7 +10,7 @@ import {
   Bar,
   YAxis,
   Legend,
-} from "recharts"
+} from "recharts";
 
 function Bigchart({
   title,
@@ -35,7 +35,7 @@ function Bigchart({
     "October",
     "November",
     "December",
-  ]
+  ];
 
   const states = [
     "Andaman & Nicobar",
@@ -74,27 +74,27 @@ function Bigchart({
     "Daman & Diu",
     "Lakshadweep",
     "Sikkim",
-  ]
+  ];
 
-  const [statevalue, setStatevalue] = useState(states[0])
-  const [monthvalue, setMonthvalue] = useState(months[0])
+  const [statevalue, setStatevalue] = useState(states[0]);
+  const [monthvalue, setMonthvalue] = useState(months[0]);
 
   function OnchangeSetstatevalue(e) {
-    setStatevalue(e.target.value)
+    setStatevalue(e.target.value);
   }
   function OnchangeSetmonthvalue(e) {
-    setMonthvalue(e.target.value)
+    setMonthvalue(e.target.value);
   }
 
   let chartData = data.filter((obj) => {
     if (obj["state"] === statevalue && obj["month"] === monthvalue) {
-      return true
+      return true;
     }
-    return false
-  })
+    return false;
+  });
   for (let element of chartData) {
-    element["requirement_in_mt_"] = parseFloat(element["requirement_in_mt_"])
-    element["availability_in_mt_"] = parseFloat(element["availability_in_mt_"])
+    element["requirement_in_mt_"] = parseFloat(element["requirement_in_mt_"]);
+    element["availability_in_mt_"] = parseFloat(element["availability_in_mt_"]);
   }
 
   return (
@@ -109,7 +109,7 @@ function Bigchart({
               <option key={e} value={e}>
                 {e}
               </option>
-            )
+            );
           })}
         </select>
         <h5>State</h5>
@@ -119,7 +119,7 @@ function Bigchart({
               <option key={e} value={e}>
                 {e}
               </option>
-            )
+            );
           })}
         </select>
         {chartData.length ? null : (
@@ -148,7 +148,7 @@ function Bigchart({
         </BarChart>
       </ResponsiveContainer>
     </div>
-  )
+  );
 }
 
-export default Bigchart
+export default Bigchart;

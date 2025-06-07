@@ -1,11 +1,12 @@
-import ProductList from "./Pages/ProductList"
-import Sidebar from "./Components/Sidebar"
-import Topbar from "./Components/Topbar"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import ProductList from "./Pages/ProductList";
+import Sidebar from "./Components/Sidebar";
+import Topbar from "./Components/Topbar";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Home from "./Pages/Home"
+import Home from "./Pages/Home";
 
-import "./App.css"
+import "./App.css";
+import Assignment from "./Pages/Assignment/Assignment";
 
 function App() {
   return (
@@ -21,11 +22,14 @@ function App() {
             <Route exact path="/product">
               <ProductList />
             </Route>
+            <Route exact path="/assignment">
+              <Assignment />
+            </Route>
           </Switch>
         </div>
       </Router>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

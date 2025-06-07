@@ -1,6 +1,6 @@
-import { useState } from "react"
-import { getData,capitalizeWords } from "../../utils.js"
-import "./Chart.css"
+import { useState } from "react";
+import { getData, capitalizeWords } from "../../utils.js";
+import "./Chart.css";
 
 import {
   XAxis,
@@ -11,7 +11,7 @@ import {
   Bar,
   YAxis,
   Legend,
-} from "recharts"
+} from "recharts";
 
 function Chart({
   title,
@@ -23,12 +23,12 @@ function Chart({
   subtitle,
   defaultValue,
 }) {
-  let a = getData(data, parent, child)
+  let a = getData(data, parent, child);
 
-  const [view, setView] = useState(defaultValue[parent])
+  const [view, setView] = useState(defaultValue[parent]);
 
   function OnchangeSetView(e) {
-    setView(e.target.value)
+    setView(e.target.value);
   }
 
   return (
@@ -40,11 +40,15 @@ function Chart({
         </h5>
         <select onChange={OnchangeSetView}>
           {Object.keys(a).map((e) => {
-            return <option key={e} value={e}>{e}</option>
+            return (
+              <option key={e} value={e}>
+                {e}
+              </option>
+            );
           })}
         </select>
       </div>
-      <ResponsiveContainer width="100%" height="100%" aspect={2/1}>
+      <ResponsiveContainer width="100%" height="100%" aspect={2 / 1}>
         <BarChart
           width={700}
           height={300}
@@ -65,7 +69,7 @@ function Chart({
         </BarChart>
       </ResponsiveContainer>
     </div>
-  )
+  );
 }
 
-export default Chart
+export default Chart;
