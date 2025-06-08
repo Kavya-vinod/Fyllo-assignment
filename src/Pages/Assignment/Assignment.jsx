@@ -1,97 +1,75 @@
 import React from "react";
 import { data } from "../../result";
-import Piechart from "../../Components/Piechart";
 import { AgGridReact } from "ag-grid-react";
-import { getSortedRows } from "../../utils";
+import { getTableData } from "../../utils";
 
 const columns = [
   {
     field: "id",
-    headerName: "ID",
-    width: 140,
+    headerName: "Rank",
     sortable: true,
-    floatingFilter: true,
-  },
-
-  {
-    field: "_year",
-    headerName: "Year",
-    width: 200,
-    sortable: true,
-    filter: "agTextColumnFilter",
-    floatingFilter: true,
+    width: 100,
   },
   {
-    field: "month",
-    filter: "agTextColumnFilter",
-    headerName: "Month",
-    width: 150,
+    field: "name",
+    headerName: "Fertilizer",
     sortable: true,
-    floatingFilter: true,
   },
   {
-    field: "product",
-    filter: "agTextColumnFilter",
-    headerName: "Product",
-    width: 180,
+    field: "value",
+    headerName: "Total Value",
     sortable: true,
-    floatingFilter: true,
-  },
-  {
-    field: "state",
-    filter: "agTextColumnFilter",
-    headerName: "State",
-    width: 250,
-    sortable: true,
-    floatingFilter: true,
-  },
-  {
-    field: "requirement_in_mt_",
-    filter: "agTextColumnFilter",
-    headerName: "Requirement (MT)",
-    width: 250,
-    sortable: true,
-    floatingFilter: true,
-  },
-  {
-    field: "availability_in_mt_",
-    filter: "agTextColumnFilter",
-    headerName: "Availability (MT)",
-    width: 190,
-    sortable: true,
-    floatingFilter: true,
   },
 ];
 
 function Assignment() {
-  const mostRequired = getSortedRows(data);
-  const leastAvailable = getSortedRows(data, "availability_in_mt_", "asc");
+  const tableData = getTableData(data, "requirement_in_mt_");
+  console.log(tableData, "tableData");
+
+  const lowestAvailability = getTableData(data, "availability_in_mt_", "asc");
+
+  console.log(lowestAvailability, "lowestAvailability");
   return (
     <div className="home">
-      <Piechart
-        data={data}
-        title="Lowest 5 Available products"
-        dataKey="availability_in_mt_"
-        isLow
-      />
-      <div>Top 5 Most Requirement</div>
-      <div className="productListTable">
-        <div className="ag-theme-alpine" style={{ width: "100%" }}>
-          <AgGridReact
-            rowData={mostRequired}
-            columnHoverHighlight={true}
-            columnDefs={columns}
-          ></AgGridReact>
+      <div style={{ display: "flex", gap: "20px" }}>
+        <div>
+          <div>Top 5 Most Requirement</div>
+          <div>
+            <div
+              className="ag-theme-alpine"
+              style={{ height: 300, width: 500 }}
+            >
+              <AgGridReact
+                style={{ width: "100%", height: "100%" }}
+                rowData={tableData}
+                columnHoverHighlight={true}
+                columnDefs={columns}
+                onGridReady={(params) => {
+                  params.api.sizeColumnsToFit(); // Fit all columns to full width
+                }}
+              ></AgGridReact>
+            </div>
+          </div>
         </div>
-      </div>
-      <div>Least Available</div>
-      <div className="productListTable">
-        <div className="ag-theme-alpine" style={{ width: "100%" }}>
-          <AgGridReact
-            rowData={leastAvailable}
-            columnHoverHighlight={true}
-            columnDefs={columns}
-          ></AgGridReact>
+        <div>
+          <div>Least Available</div>
+          <div>
+            <div
+              className="ag-theme-alpine"
+              style={{ height: 300, width: 500 }}
+            >
+              <AgGridReact
+                rowData={lowestAvailability}
+                style={{ width: "100%", height: "100%" }}
+                columnHoverHighlight={true}
+                columnDefs={columns}
+                onGridReady={(params) => {
+                  params.api.sizeColumnsToFit(); // Fit all columns to full width
+                }}
+                height={200}
+              ></AgGridReact>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,8 +1,8 @@
-import "./ProductList.css"
-import { data } from "../../result"
-import { AgGridReact } from "ag-grid-react"
-import "ag-grid-community/dist/styles/ag-grid.css"
-import "ag-grid-community/dist/styles/ag-theme-alpine.css"
+import "./ProductList.css";
+import { data } from "../../result";
+import { AgGridReact } from "ag-grid-react";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const columns = [
   {
@@ -61,9 +61,10 @@ const columns = [
     sortable: true,
     floatingFilter: true,
   },
-]
+];
 
 function ProductList() {
+  console.log(data, "data");
   return (
     <div className="productList">
       <div>ProductList</div>
@@ -78,7 +79,7 @@ function ProductList() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default ProductList
+export default ProductList;

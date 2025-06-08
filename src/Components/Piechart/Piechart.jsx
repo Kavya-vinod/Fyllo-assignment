@@ -31,10 +31,9 @@ const renderCustomizedLabel = ({
   );
 };
 
-function Piechart({ data, title, dataKey, isLow = false }) {
-  let chartData = isLow
-    ? getPieDataLeast(data, dataKey)
-    : getPieData(data, dataKey);
+function Piechart({ data, title, dataKey }) {
+  console.log(data, "piechart");
+  let chartData = getPieData(data, dataKey);
   return (
     <div className="piechart">
       <h3 className="piechartTitle">{title}</h3>
