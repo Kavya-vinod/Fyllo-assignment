@@ -33,7 +33,7 @@ function Assignment() {
     <div className="home">
       <div style={{ display: "flex", gap: "20px" }}>
         <div>
-          <div>Top 5 Most Requirement</div>
+          <div>Top 5 Most Required Fertilizers</div>
           <div>
             <div
               className="ag-theme-alpine"
@@ -52,7 +52,7 @@ function Assignment() {
           </div>
         </div>
         <div>
-          <div>Least Available</div>
+          <div>Top 5 Least Available Fertilizers</div>
           <div>
             <div
               className="ag-theme-alpine"
